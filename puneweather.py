@@ -1,3 +1,4 @@
+# MUST BE FIRST - before any other Streamlit commands
 import streamlit as st
 st.set_page_config(
     page_title="Pune Weather Forecast Pro", 
@@ -6,11 +7,12 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Core imports
+# Now other imports
+from meteostat import Point, Daily, Hourly
 from datetime import datetime, timedelta
 import pandas as pd
 import numpy as np
-import plotly.express as px # Correct import
+import plotly.express as px
 import plotly.graph_objects as go
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error, accuracy_score, classification_report
@@ -19,19 +21,6 @@ from sklearn.preprocessing import LabelEncoder
 from xgboost import XGBRegressor, XGBClassifier
 import warnings
 warnings.filterwarnings("ignore")
-
-# Safe dependency check
-try:
-    from meteostat import Point, Daily, Hourly
-except ImportError as e:
-    st.error(f"""
-    ❌ Missing required package: {e}
-    
-    🔧 Solution:
-    1. Add 'meteostat==1.6.5' to requirements.txt
-    2. Redeploy your app
-    """)
-    st.stop()
 
 # Custom CSS for gradient background and styling
 st.markdown("""
