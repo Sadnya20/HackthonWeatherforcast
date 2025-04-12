@@ -90,7 +90,7 @@ def load_data():
     """Load and prepare weather data"""
     try:
         location = Point(18.5204, 73.8567)  # Pune
-        start = datetime(2015, 1, 1)
+        start = datetime(2020, 1, 1)
         end = datetime.now()
         
         # Daily weather
